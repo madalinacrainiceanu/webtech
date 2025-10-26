@@ -1,4 +1,5 @@
 {
+  "type": "module",
   "name": "nodejs-sandbox",
   "version": "1.0.0",
   "description": "Node.js example server starter project",
@@ -14,6 +15,7 @@
     "nodemon": "^3.1.5"
   },
   "dependencies": {
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "node-fetch": "^3.3.2"
   }
 }

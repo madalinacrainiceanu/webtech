@@ -35,31 +35,26 @@ class NextIntegerStream extends Stream {
   }
 }
 
-const constant = new ConstantStream(1);
-const nextInteger = new NextIntegerStream();
-
-for (let i = 0; i < 10; i++) {
-  console.log(`constant[${i}] = ${constant.next}`);
-  console.log(`nextInteger[${i}] = ${nextInteger.next}`);
-}
-
-console.log(Stream.count);
-
-//cerinta1
-class EvenStream extends Stream {
+class EvenNumberStream extends Stream {
   constructor(startValue) {
-    // dacă valoarea inițială e impară, o transform în pară
+    // dacă valoarea inițială e impară, o facem pară adăugând 1
     const firstEven = startValue % 2 === 0 ? startValue : startValue + 1;
-    // transmit la clasa părinte funcția care adaugă 2 la fiecare pas
     super(firstEven, (value) => value + 2);
   }
 }
 
-console.log("Șir de numere pare:");
-const even = new EvenStream(3); // începe de la 4, fiind primul număr par >= 3
+// Test
+const constant = new ConstantStream(1);
+const nextInteger = new NextIntegerStream();
+const evenStream1 = new EvenNumberStream(2); // pornește de la par
+const evenStream2 = new EvenNumberStream(3); // pornește de la impar, dar se corectează automat
 
-for (let i = 0; i < 10; i++) {
-  console.log(`even[${i}] = ${even.next}`);
+for (let i = 0; i < 5; i++) {
+  console.log(`evenStream1[${i}] = ${evenStream1.next}`);
 }
 
-console.log(`Număr total de stream-uri create: ${Stream.count}`);
+for (let i = 0; i < 5; i++) {
+  console.log(`evenStream2[${i}] = ${evenStream2.next}`);
+}
+
+console.log("Număr total de streamuri create:", Stream.count);
