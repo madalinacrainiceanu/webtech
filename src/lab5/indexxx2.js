@@ -18,12 +18,20 @@ const array = [
   { id: 5, name: "Marius", age: 22 },
 ];
 
-// GET - returnează lista completă
+// GET - toate persoanele
 router.route("/getList").get((req, res) => {
   res.json(array);
 });
 
-// POST - adaugă un nou element în listă
+// GET - o persoană după id
+router.route("/getList/:id").get((req, res) => {
+  const id = parseInt(req.params.id);
+  const person = array.find((p) => p.id === id);
+  if (person) res.json(person);
+  else res.status(404).json({ message: "Persoană negăsită" });
+});
+
+// POST - adaugă o persoană nouă
 router.route("/postList").post((req, res) => {
   const el = req.body;
   el.id = array.length + 1;
@@ -31,17 +39,30 @@ router.route("/postList").post((req, res) => {
   res.json(el);
 });
 
-// noul endpoint
-router.route("/getById/:id").get((req, res) => {
+// PUT - actualizează o persoană după id
+router.route("/update/:id").put((req, res) => {
   const id = parseInt(req.params.id);
-  const item = array.find((x) => x.id === id);
-
-  if (item) {
-    res.json(item);
+  const index = array.findIndex((p) => p.id === id);
+  if (index !== -1) {
+    array[index] = { ...array[index], ...req.body };
+    res.json(array[index]);
   } else {
-    res.status(404).json({ message: "Resursa nu a fost găsită." });
+    res.status(404).json({ message: "Persoană negăsită" });
+  }
+});
+
+// DELETE - șterge o persoană după id
+router.route("/delete/:id").delete((req, res) => {
+  const id = parseInt(req.params.id);
+  const index = array.findIndex((p) => p.id === id);
+  if (index !== -1) {
+    const deleted = array.splice(index, 1);
+    res.json(deleted[0]);
+  } else {
+    res.status(404).json({ message: "Persoană negăsită" });
   }
 });
 
 const port = 8000;
-app.listen(port, () => console.log(`API is running on port ${port}`));
+app.listen(port);
+console.log("API is running on port " + port);
