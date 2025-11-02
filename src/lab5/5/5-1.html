@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Agenda telefonică</title>
+    <style>
+      table {
+        width: 50%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+
+      th,
+      td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: center;
+      }
+
+      th {
+        background-color: #f0f0f0;
+      }
+
+      form {
+        margin-top: 20px;
+      }
+
+      input {
+        margin-right: 10px;
+      }
+    </style>
+
+    <script>
+      window.onload = () => {
+        const form = document.getElementById("form");
+        const nameInput = document.getElementById("name");
+        const phoneInput = document.getElementById("phone");
+        const tableBody = document.getElementById("table-body");
+
+        // când se trimite formularul
+        form.onsubmit = (e) => {
+          e.preventDefault(); // oprește reîncărcarea paginii
+
+          // preluăm valorile
+          const name = nameInput.value.trim();
+          const phone = phoneInput.value.trim();
+
+          if (!name || !phone) {
+            alert("Completează ambele câmpuri!");
+            return;
+          }
+
+          // creăm un rând nou în tabel
+          const newRow = document.createElement("tr");
+          const nameCell = document.createElement("td");
+          const phoneCell = document.createElement("td");
+
+          nameCell.textContent = name;
+          phoneCell.textContent = phone;
+
+          // adăugăm celulele în rând
+          newRow.appendChild(nameCell);
+          newRow.appendChild(phoneCell);
+
+          // adăugăm rândul în tabel
+          tableBody.appendChild(newRow);
+
+          // resetăm formularul
+          form.reset();
+        };
+      };
+    </script>
+  </head>
+
+  <body>
+    <h1>Agenda telefonică</h1>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Nume</th>
+          <th>Telefon</th>
+        </tr>
+      </thead>
+      <tbody id="table-body"></tbody>
+    </table>
+
+    <h2>Adaugă un contact nou</h2>
+    <form id="form">
+      <input type="text" id="name" placeholder="Nume" />
+      <input type="text" id="phone" placeholder="Telefon" />
+      <button type="submit">Adaugă</button>
+    </form>
+  </body>
+</html>
