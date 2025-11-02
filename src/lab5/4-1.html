@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Evenimente și evenimente custom</title>
+    <script>
+      window.onload = () => {
+        const paragraph = document.getElementById("text");
+
+        // Cream un eveniment custom numit "highlight"
+        const highlightEvent = new Event("highlight");
+
+        // Tratează evenimentul custom
+        const handleHighlight = () => {
+          console.log("Evenimentul custom 'highlight' a fost declanșat!");
+          paragraph.style.color = "red";
+        };
+
+        // Tratează evenimentul standard 'mouseover'
+        const handleMouseOver = () => {
+          console.log("Mouse-ul este peste paragraf!");
+          // Trimitem evenimentul custom
+          paragraph.dispatchEvent(highlightEvent);
+        };
+
+        // Asociem evenimentele
+        paragraph.addEventListener("mouseover", handleMouseOver);
+        paragraph.addEventListener("highlight", handleHighlight);
+      };
+    </script>
+  </head>
+
+  <body>
+    <h2>Exemplu de tratare eveniment + eveniment custom</h2>
+    <p id="text">Treci cu mouse-ul peste acest text.</p>
+  </body>
+</html>
