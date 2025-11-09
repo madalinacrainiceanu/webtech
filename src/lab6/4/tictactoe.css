@@ -1,0 +1,38 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.container {
+  width: 300px;
+  margin: auto;
+}
+
+.board {
+  width: 300px;
+  height: 300px;
+  margin-top: 20px;
+}
+
+.cell {
+  width: 100px;
+  height: 100px;
+  float: left;
+  border: 2px solid #cccccc;
+  box-sizing: border-box;
+}
+
+/* Eliminăm liniile duble */
+.top {
+  border-top: none;
+}
+.bottom {
+  border-bottom: none;
+}
+.left {
+  border-left: none;
+}
+.right {
+  border-right: none;
+}
