@@ -1,0 +1,57 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    padding: 32px;
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+}
+
+h1 {
+    margin-bottom: 24px;
+}
+
+.form-container {
+    display: flex;
+    flex-wrap: wrap;         /* esențial pentru reflow */
+    gap: 20px;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 900px;
+}
+
+.form-item {
+    display: flex;
+    flex-direction: column;
+    width: 280px;            /* lățime fixă -> controlează câte coloane apar */
+}
+
+.form-item label {
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+
+.form-item input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.submit-btn {
+    margin-top: 12px;
+    padding: 12px 20px;
+    border: none;
+    background: darkcyan;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.submit-btn:hover {
+    background: #007f7f;
+}
