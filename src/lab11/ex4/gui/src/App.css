@@ -1,0 +1,30 @@
+.app-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+.content-wrapper {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+  text-align: left;
+}
+
+.left-column {
+  flex: 1;
+}
+
+.right-column {
+  flex: 1;
+}
+
+.details-pane {
+  border: 1px solid #007bff;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: #f0f8ff;
+  height: 100%;
+}
